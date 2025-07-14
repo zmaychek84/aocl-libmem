@@ -1,0 +1,2590 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-c49c8f19-25ff-4519-9819-37a523b8e94a",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-f8635005-c041-49ec-9443-4b81bc85ad63",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-f9415362-1e36-4cb1-8320-6ea04c1c87fc",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-b01f9e60-53c6-4591-b18e-7763e0b6a7bb",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-19b4d806-a4e9-42a5-98ee-400aad1a98c0",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-32cca92b-058a-4932-9ec1-6ac497ffe3c8",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe vulnerability \"Security Concern: Detected Use of subprocess call with shell=True\" in Python arises when the `subprocess.call()` function is used with the `shell=True` argument. This can lead to security risks such as shell injection, where an attacker can execute arbitrary commands on the system. This is particularly dangerous if the input to the command is not properly sanitized, as it can allow an attacker to execute malicious commands.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `shell=True` unless absolutely necessary. Instead, pass the command and its arguments as a list. This prevents shell injection by not invoking the shell directly.\n\n### Source Code Fix Recommendation\n\nHere is a fixed version of the vulnerable code:\n\n```python\nimport glob\nimport os\n\n# Get a list of all .csv files\ncsv_files = glob.glob('*.csv')\n\n# Remove each .csv file\nfor file in csv_files:\n    os.remove(file)\n```\n\n### Library Dependencies\n\nThe code example requires the following standard Python libraries:\n\n- `glob`\n- `os`\n\nThese libraries are part of the Python Standard Library and do not require additional installation.\n\n### Relevant Resources\n\n- [OWASP Command Injection](https://owasp.org/www-community/attacks/Command_Injection)\n- [CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B602"
+                ]
+              }
+            },
+            {
+              "id": "glog-0d09b956-c96a-4e83-903b-f09f8cc764c9",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe vulnerability arises from the use of the `eval()` function in Python, which can execute arbitrary code. This can lead to security risks if the input to `eval()` is not properly sanitized, as it may allow an attacker to execute malicious code. In this specific case, the code `size = eval('size'+' '+ iterator)` is vulnerable because it evaluates a string that could be manipulated to include harmful code.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `eval()` whenever possible. Instead, use safer alternatives such as `ast.literal_eval()` when you need to evaluate a string containing a Python literal or expression. `ast.literal_eval()` is safer because it only evaluates strings containing literals and expressions, not arbitrary code.\n\n### Source Code Fix Recommendation\n\nReplace the use of `eval()` with `ast.literal_eval()` if the input is expected to be a Python literal. If the input is not a literal, consider other ways to safely parse or handle the input.\n\n```python\nimport ast\n\n# Assuming 'iterator' is a string that represents a literal\nsize = ast.literal_eval('size' + ' ' + iterator)\n```\n\n### Library Dependencies\n\nThe code example requires the following standard library:\n\n- `ast`: This is a built-in Python library, so no additional installation is required.\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-94: Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B307"
+                ]
+              }
+            },
+            {
+              "id": "glog-3d4b0164-33e8-4f02-888b-e15fba1b4e40",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-5ca92d47-50ca-47a0-ada7-14319c8f7132",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe `strncat` function in C++ is used to concatenate a specified number of characters from one string to another. However, it is considered unsafe because it does not guarantee null-termination of the destination string if the source string is longer than the specified number of characters. This can lead to buffer overflows, which are a common vulnerability in C++ programs. The specific vulnerability occurs when `strncat` is used without proper bounds checking, potentially allowing an attacker to overwrite adjacent memory and execute arbitrary code.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Prefer using safer string manipulation functions like `strncpy_s` or `strlcat` (if available) that ensure null-termination and provide better bounds checking.\n2. **Manual Bounds Checking**: Always perform manual bounds checking to ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Static Analysis Tools**: Use static analysis tools to detect unsafe string operations in your codebase.\n4. **Code Reviews**: Regularly conduct code reviews to identify and fix unsafe string operations.\n\n### Source Code Fix Recommendation\n\nHere is a fixed version of the code using `strncpy_s`, which is a safer alternative:\n\n```cpp\n#include <cstring>\n#include <iostream>\n\nint main() {\n    const size_t buffer_size = 256;\n    char page_alnd_addr[buffer_size] = {0};\n    const char* needle = \"example\";\n    size_t needle_len = strlen(needle);\n\n    // Ensure that the destination buffer is large enough\n    if (needle_len < buffer_size) {\n        strncpy_s(page_alnd_addr, buffer_size, needle, needle_len);\n        page_alnd_addr[needle_len] = '\\0'; // Ensure null-termination\n    } else {\n        std::cerr << \"Error: Buffer overflow risk detected!\" << std::endl;\n    }\n\n    std::cout << \"Result: \" << page_alnd_addr << std::endl;\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code, you need the following standard library:\n\n- `<cstring>`: For string manipulation functions.\n- `<iostream>`: For input and output operations.\n\n### OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)\n- [CWE-242: Use of Inherently Dangerous Function](https://cwe.mitre.org/data/definitions/242.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS108330"
+                ]
+              }
+            },
+            {
+              "id": "glog-568f192e-9b3d-4b3f-822b-e6a2dc06fb6e",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe `strncat` function in C/C++ is used to concatenate a specified number of characters from one string to another. However, it can lead to vulnerabilities if not used carefully, particularly buffer overflow vulnerabilities. This occurs when the destination buffer is not large enough to hold the concatenated result, potentially allowing attackers to overwrite adjacent memory and execute arbitrary code.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Consider using safer string manipulation functions such as `strlcat` (if available) or C++ string classes like `std::string` which handle memory management automatically.\n2. **Proper Buffer Sizing**: Ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Explicit Null Termination**: Always ensure that the destination string is null-terminated after concatenation.\n4. **Bounds Checking**: Perform explicit bounds checking before concatenation to prevent buffer overflow.\n\n### Source Code Fix Recommendation\n\nBelow is a fixed version of the vulnerable code using `strncat`. The fix ensures that the destination buffer is large enough and properly null-terminated.\n\n```cpp\n#include <cstring>  // Required for strncat\n#include <iostream> // Required for std::cout\n\nint main() {\n    const size_t bufferSize = 256; // Define a buffer size\n    char str1_alnd_addr[bufferSize] = \"Hello, \";\n    char str3_alnd_addr[] = \"World!\";\n    size_t size = sizeof(str3_alnd_addr) - 1; // Exclude null terminator\n\n    // Ensure the destination buffer has enough space for the concatenated result\n    if (strlen(str1_alnd_addr) + size < bufferSize) {\n        strncat(str1_alnd_addr, str3_alnd_addr, size);\n        str1_alnd_addr[bufferSize - 1] = '\\0'; // Explicitly null-terminate\n    } else {\n        std::cerr << \"Buffer overflow risk, operation aborted.\" << std::endl;\n    }\n\n    std::cout << str1_alnd_addr << std::endl;\n    return 0;\n}\n```\n\n### Library Dependencies\n\n- `<cstring>`: Required for using `strncat`.\n- `<iostream>`: Required for input/output operations.\n\n### Relevant Resources\n\n- [OWASP C++ Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [Common Weakness Enumeration: CWE-120](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS108330"
+                ]
+              }
+            },
+            {
+              "id": "glog-ff389c7b-8a46-4c8c-8df6-82911d0a0d4c",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-c607c085-1678-4152-aff7-93902be6b52d",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) provided by the C++ standard library, such as those found in `<random>`. These generators are designed to produce sequences of numbers that are not easily predictable, even if part of the sequence is known.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a CSPRNG from the `<random>` library. Below is an example of how to replace `rand() %` with a secure alternative:\n\n```cpp\n#include <random>\n#include <iostream>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for the random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Equivalent to rand() % 100\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following standard library headers are required:\n\n- `<random>`: Provides facilities for random number generation.\n- `<iostream>`: Used for input and output stream operations.\n\n### Relevant Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-d2437473-4b35-4d80-a07a-563f592e2b70",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe `strncat` function in C/C++ is used to concatenate a specified number of characters from one string to another. However, it can lead to vulnerabilities if not used carefully, particularly buffer overflow vulnerabilities. This occurs when the destination buffer is not large enough to hold the concatenated result, potentially leading to memory corruption, crashes, or security breaches.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Consider using safer string manipulation functions like `strncpy_s` or `strlcat` if available, which provide better bounds checking.\n2. **Proper Buffer Sizing**: Ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Manual Bounds Checking**: Always manually check the size of the destination buffer before performing concatenation to prevent overflow.\n4. **Static Analysis Tools**: Use static analysis tools to detect potential buffer overflows in your code.\n\n### Source Code Fix Recommendation\n\nHere is a fixed version of the code that uses `strncat`:\n\n```cpp\n#include <cstring>\n#include <iostream>\n\nint main() {\n    const size_t bufferSize = 100;\n    char str1_alnd_addr[bufferSize] = \"Hello, \";\n    char str2_alnd_addr[] = \"World!\";\n    size_t size = sizeof(str2_alnd_addr) - 1; // Exclude null terminator\n\n    // Ensure there is enough space in str1_alnd_addr for concatenation\n    if (strlen(str1_alnd_addr) + size < bufferSize) {\n        strncat(str1_alnd_addr, str2_alnd_addr, size);\n    } else {\n        std::cerr << \"Buffer overflow risk, concatenation aborted.\" << std::endl;\n    }\n\n    std::cout << str1_alnd_addr << std::endl;\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code, the following standard library is required:\n\n- `<cstring>`: For string manipulation functions.\n- `<iostream>`: For input and output operations.\n\n### Relevant Resources\n\n- [OWASP C++ Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS108330"
+                ]
+              }
+            },
+            {
+              "id": "glog-25da8e8d-c59f-40a6-b469-c1933c613813",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-69c38849-30f4-4341-8ce4-7ce0a0ccd3f2",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-c3bba3ee-5341-4612-bac1-481f7b2d8e3b",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe `strncat` function in C/C++ is used to concatenate a specified number of characters from one string to another. However, it can lead to vulnerabilities if not used carefully, particularly buffer overflow vulnerabilities. This occurs when the destination buffer is not large enough to hold the concatenated result, potentially leading to memory corruption, crashes, or security breaches.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Consider using safer string manipulation functions like `strncpy_s` or `strlcat` if available, which provide better bounds checking.\n2. **Proper Buffer Sizing**: Ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Manual Bounds Checking**: Always manually check the size of the destination buffer before performing concatenation to prevent overflow.\n4. **Static Analysis Tools**: Use static analysis tools to detect potential buffer overflows in your code.\n\n### Source Code Fix Recommendation\n\nHere is a fixed version of the code that uses `strncat`:\n\n```cpp\n#include <cstring>\n#include <iostream>\n\nint main() {\n    const size_t bufferSize = 100;\n    char str1_alnd_addr[bufferSize] = \"Hello, \";\n    char str2_alnd_addr[] = \"World!\";\n    size_t size = sizeof(str2_alnd_addr) - 1; // Exclude null terminator\n\n    // Ensure there is enough space in str1_alnd_addr for concatenation\n    if (strlen(str1_alnd_addr) + size < bufferSize) {\n        strncat(str1_alnd_addr, str2_alnd_addr, size);\n    } else {\n        std::cerr << \"Buffer overflow risk, concatenation aborted.\" << std::endl;\n    }\n\n    std::cout << str1_alnd_addr << std::endl;\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code, the following standard library is required:\n\n- `<cstring>`: For string manipulation functions.\n- `<iostream>`: For input and output operations.\n\n### Relevant Resources\n\n- [OWASP C++ Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS108330"
+                ]
+              }
+            },
+            {
+              "id": "glog-a9f021e8-843d-4966-b9e3-5defe3782db4",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-f0c0bd38-3f52-4e9d-a5b3-7d9180c3a297",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-20e759d4-e216-42b0-af51-d91aa7f75341",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Detected Use of Prohibited C Function (strcat)\" vulnerability arises when the `strcat` function is used in C++ programming. This function is inherently unsafe because it does not perform bounds checking, which can lead to buffer overflow vulnerabilities. Buffer overflows can be exploited by attackers to execute arbitrary code, cause a program to crash, or corrupt data.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Replace `strcat` with safer alternatives like `strncat` or C++ string handling functions such as `std::string::append`.\n2. **Bounds Checking**: Always ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Static Analysis Tools**: Use static analysis tools to detect unsafe function usage in your codebase.\n4. **Code Reviews**: Regularly conduct code reviews to identify and mitigate potential vulnerabilities.\n\n### Source Code Fix Recommendation\n\nReplace the use of `strcat` with `strncat` or `std::string` to prevent buffer overflow:\n\n```cpp\n#include <cstring>  // For strncat\n#include <string>   // For std::string\n\nvoid safeConcatenate(char* dest, size_t destSize, const char* src) {\n    // Using strncat with explicit bounds checking\n    strncat(dest, src, destSize - strlen(dest) - 1);\n}\n\nvoid safeConcatenate(std::string& dest, const std::string& src) {\n    // Using std::string for safer concatenation\n    dest.append(src);\n}\n```\n\n### Library Dependencies\n\nFor the code example to execute properly, the following standard libraries are required:\n\n- `<cstring>`: Provides the `strncat` function.\n- `<string>`: Provides the `std::string` class and its methods.\n\n### Relevant Resources\n\n- [OWASP Buffer Overflow](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS141863"
+                ]
+              }
+            },
+            {
+              "id": "glog-2d375ec9-0e8c-41a8-909b-01cd4aa130b9",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-d5b8f9a4-c75f-4d0e-8257-fd5d5fac773c",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe `strncat` function in C/C++ is used to concatenate a specified number of characters from one string to another. However, it can lead to vulnerabilities if not used carefully, particularly buffer overflow vulnerabilities. This occurs when the destination buffer is not large enough to hold the concatenated result, potentially allowing attackers to overwrite adjacent memory and execute arbitrary code.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Consider using safer string manipulation functions such as `strlcat` (if available) or C++ string classes like `std::string` which handle memory management automatically.\n2. **Proper Buffer Sizing**: Ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Explicit Null Termination**: Always ensure that the destination string is null-terminated after concatenation.\n4. **Bounds Checking**: Perform explicit bounds checking before concatenation to prevent buffer overflow.\n\n### Source Code Fix Recommendation\n\nBelow is a fixed version of the vulnerable code using `strncat`. The fix ensures that the destination buffer is large enough and properly null-terminated.\n\n```cpp\n#include <cstring>  // Required for strncat\n#include <iostream> // Required for std::cout\n\nint main() {\n    const size_t bufferSize = 256; // Define a buffer size\n    char str1_alnd_addr[bufferSize] = \"Hello, \";\n    char str3_alnd_addr[] = \"World!\";\n    size_t size = sizeof(str3_alnd_addr) - 1; // Exclude null terminator\n\n    // Ensure the destination buffer has enough space for the concatenated result\n    if (strlen(str1_alnd_addr) + size < bufferSize) {\n        strncat(str1_alnd_addr, str3_alnd_addr, size);\n        str1_alnd_addr[bufferSize - 1] = '\\0'; // Explicitly null-terminate\n    } else {\n        std::cerr << \"Buffer overflow risk, operation aborted.\" << std::endl;\n    }\n\n    std::cout << str1_alnd_addr << std::endl;\n    return 0;\n}\n```\n\n### Library Dependencies\n\n- `<cstring>`: Required for using `strncat`.\n- `<iostream>`: Required for input/output operations.\n\n### Relevant Resources\n\n- [OWASP C++ Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [Common Weakness Enumeration: CWE-120](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS108330"
+                ]
+              }
+            },
+            {
+              "id": "glog-1699fe39-937b-4740-9553-181b713c603e",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-4fc2208a-eeff-4e41-95e8-ab0b9af53737",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-f7588291-37e8-4189-9195-d1c180b1b2c0",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) provided by the C++ standard library, such as those found in `<random>`. These generators are designed to produce sequences of numbers that are not easily predictable, even if part of the sequence is known.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a CSPRNG from the `<random>` library. Below is an example of how to replace `rand() %` with a secure alternative:\n\n```cpp\n#include <random>\n#include <iostream>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for the random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Equivalent to rand() % 100\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following standard library headers are required:\n\n- `<random>`: Provides facilities for random number generation.\n- `<iostream>`: Used for input and output stream operations.\n\n### Relevant Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-69d5ff4f-78e1-4205-90db-a8021add0db4",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-2dd2ccb8-cd72-4b41-9c21-433452f32ee9",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Detected Use of Prohibited C Function (strcat)\" vulnerability arises when the `strcat` function is used in C++ programming. This function is inherently unsafe because it does not perform bounds checking, which can lead to buffer overflow vulnerabilities. Buffer overflows can be exploited by attackers to execute arbitrary code, cause a program to crash, or corrupt data.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Replace `strcat` with safer alternatives like `strncat` or C++ string handling functions such as `std::string::append`.\n2. **Bounds Checking**: Always ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Static Analysis Tools**: Use static analysis tools to detect unsafe function usage in your codebase.\n4. **Code Reviews**: Regularly conduct code reviews to identify and mitigate potential vulnerabilities.\n\n### Source Code Fix Recommendation\n\nReplace the use of `strcat` with `strncat` or `std::string` to prevent buffer overflow:\n\n```cpp\n#include <cstring>  // For strncat\n#include <string>   // For std::string\n\nvoid safeConcatenate(char* dest, size_t destSize, const char* src) {\n    // Using strncat with explicit bounds checking\n    strncat(dest, src, destSize - strlen(dest) - 1);\n}\n\nvoid safeConcatenate(std::string& dest, const std::string& src) {\n    // Using std::string for safer concatenation\n    dest.append(src);\n}\n```\n\n### Library Dependencies\n\nFor the code example to execute properly, the following standard libraries are required:\n\n- `<cstring>`: Provides the `strncat` function.\n- `<string>`: Provides the `std::string` class and its methods.\n\n### Relevant Resources\n\n- [OWASP Buffer Overflow](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS141863"
+                ]
+              }
+            },
+            {
+              "id": "glog-62599944-f2a0-4bf4-b597-9302a040dbc1",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-e610bd4a-e8b2-4490-822d-01140f12b92b",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-7d31fd7e-552a-47f8-ad44-65594a4d41a4",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-7e332286-b084-49cb-965a-2269d6627a73",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Detected Use of Prohibited C Function (strcat)\" vulnerability arises when the `strcat` function is used in C++ programming. This function is inherently unsafe because it does not perform bounds checking, which can lead to buffer overflow vulnerabilities. Buffer overflows can be exploited by attackers to execute arbitrary code, cause a program to crash, or corrupt data.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Replace `strcat` with safer alternatives like `strncat` or C++ string handling functions such as `std::string::append`.\n2. **Bounds Checking**: Always ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Static Analysis Tools**: Use static analysis tools to detect unsafe function usage in your codebase.\n4. **Code Reviews**: Regularly conduct code reviews to identify and mitigate potential vulnerabilities.\n\n### Source Code Fix Recommendation\n\nReplace the use of `strcat` with `strncat` or `std::string` to prevent buffer overflow:\n\n```cpp\n#include <cstring>  // For strncat\n#include <string>   // For std::string\n\nvoid safeConcatenate(char* dest, size_t destSize, const char* src) {\n    // Using strncat with explicit bounds checking\n    strncat(dest, src, destSize - strlen(dest) - 1);\n}\n\nvoid safeConcatenate(std::string& dest, const std::string& src) {\n    // Using std::string for safer concatenation\n    dest.append(src);\n}\n```\n\n### Library Dependencies\n\nFor the code example to execute properly, the following standard libraries are required:\n\n- `<cstring>`: Provides the `strncat` function.\n- `<string>`: Provides the `std::string` class and its methods.\n\n### Relevant Resources\n\n- [OWASP Buffer Overflow](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS141863"
+                ]
+              }
+            },
+            {
+              "id": "glog-902774ac-d8ac-4957-a617-22648bb7c4b2",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-4fc6e1bb-755f-48ac-885f-917995ca4be8",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-03dd1f33-e3d2-46ef-99e5-78e9f55da3b5",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-9cc33e28-ac35-42dd-8be8-9dc9bba8ed37",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-929fe5b9-d280-46f4-9762-3ce8d662eda0",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Detected Use of Prohibited C Function (strcat)\" vulnerability arises when the `strcat` function is used in C++ programming. This function is inherently unsafe because it does not perform bounds checking, which can lead to buffer overflow vulnerabilities. Buffer overflows can be exploited by attackers to execute arbitrary code, cause a program to crash, or corrupt data.\n\n### General Mitigation Advice\n\n1. **Use Safer Alternatives**: Replace `strcat` with safer alternatives like `strncat` or C++ string handling functions such as `std::string::append`.\n2. **Bounds Checking**: Always ensure that the destination buffer is large enough to hold the concatenated result, including the null terminator.\n3. **Static Analysis Tools**: Use static analysis tools to detect unsafe function usage in your codebase.\n4. **Code Reviews**: Regularly conduct code reviews to identify and mitigate potential vulnerabilities.\n\n### Source Code Fix Recommendation\n\nReplace the use of `strcat` with `strncat` or `std::string` to prevent buffer overflow:\n\n```cpp\n#include <cstring>  // For strncat\n#include <string>   // For std::string\n\nvoid safeConcatenate(char* dest, size_t destSize, const char* src) {\n    // Using strncat with explicit bounds checking\n    strncat(dest, src, destSize - strlen(dest) - 1);\n}\n\nvoid safeConcatenate(std::string& dest, const std::string& src) {\n    // Using std::string for safer concatenation\n    dest.append(src);\n}\n```\n\n### Library Dependencies\n\nFor the code example to execute properly, the following standard libraries are required:\n\n- `<cstring>`: Provides the `strncat` function.\n- `<string>`: Provides the `std::string` class and its methods.\n\n### Relevant Resources\n\n- [OWASP Buffer Overflow](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow)\n- [CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')](https://cwe.mitre.org/data/definitions/120.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS141863"
+                ]
+              }
+            },
+            {
+              "id": "glog-ff64865c-4cde-4190-a355-ea52ecbf117e",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) provided by the C++ standard library, such as those found in `<random>`. These generators are designed to produce sequences of numbers that are not easily predictable, even if part of the sequence is known.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a CSPRNG from the `<random>` library. Below is an example of how to replace `rand() %` with a secure alternative:\n\n```cpp\n#include <random>\n#include <iostream>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for the random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Equivalent to rand() % 100\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following standard library headers are required:\n\n- `<random>`: Provides facilities for random number generation.\n- `<iostream>`: Used for input and output stream operations.\n\n### Relevant Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-855c214f-8d2d-4efd-a2a9-42fd07bb9235",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-93a409c0-6eb6-4952-bfcc-16a8fe4a255a",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-19a0d306-d13c-4e98-8bfe-a8a827eb5276",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-bc1ba377-0189-4580-be6e-ca8bd32aad94",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially in security-sensitive applications. The `rand()` function is not suitable for cryptographic purposes because it generates predictable sequences of numbers if the seed is known. This predictability can be exploited by attackers to compromise the security of the application.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers more securely.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand()` with a more secure random number generator from the `<random>` library. Here is an example of how to do this:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister random number generator\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define a distribution range\n    std::uniform_int_distribution<> dis(1, 100);\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example properly, the following library is required:\n\n- `<random>`: This library provides facilities for generating random numbers.\n\n### OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            },
+            {
+              "id": "glog-af9c0e8c-a14a-4c8d-8f50-7a25a0615566",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nIn C++ programming, using weak or non-cryptographic random number generators, such as the `rand()` function, can lead to vulnerabilities, especially when randomness is critical for security purposes. The `rand()` function is not suitable for cryptographic purposes because it produces predictable sequences of numbers if the seed is known or can be guessed. This can lead to vulnerabilities in applications where randomness is used for generating keys, tokens, or any other security-related data.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, use a cryptographically secure random number generator (CSPRNG) instead of `rand()`. In C++, the `<random>` library provides better alternatives, such as `std::random_device` and `std::mt19937`, which can be used to generate random numbers with better randomness properties.\n\n### Source Code Fix Recommendation\n\nReplace the use of `rand() %` with a more secure random number generation approach using the `<random>` library. Below is an example of how to replace `rand()` with a CSPRNG:\n\n```cpp\n#include <iostream>\n#include <random>\n\nint main() {\n    // Create a random device and a Mersenne Twister engine\n    std::random_device rd;\n    std::mt19937 gen(rd());\n\n    // Define the range for random numbers\n    std::uniform_int_distribution<> dis(0, 99); // Example range [0, 99]\n\n    // Generate a random number\n    int random_number = dis(gen);\n\n    std::cout << \"Secure random number: \" << random_number << std::endl;\n\n    return 0;\n}\n```\n\n### Library Dependencies\n\nTo execute the above code example, the following library is required:\n\n- `<random>`: This is part of the C++ Standard Library and does not require any additional dependencies beyond a standard C++ compiler that supports C++11 or later.\n\n### Relevant Links\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)](https://cwe.mitre.org/data/definitions/338.html)"
+              },
+              "properties": {
+                "tags": [
+                  "DS148264"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-c49c8f19-25ff-4519-9819-37a523b8e94a",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 2143,
+                  "startColumn": 30,
+                  "endLine": 2143,
+                  "endColumn": 38,
+                  "charOffset": 78616,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-f8635005-c041-49ec-9443-4b81bc85ad63",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 2143,
+                  "startColumn": 30,
+                  "endLine": 2143,
+                  "endColumn": 35,
+                  "charOffset": 78616,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-f9415362-1e36-4cb1-8320-6ea04c1c87fc",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 2157,
+                  "startColumn": 30,
+                  "endLine": 2157,
+                  "endColumn": 38,
+                  "charOffset": 79079,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-b01f9e60-53c6-4591-b18e-7763e0b6a7bb",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 2086,
+                  "startColumn": 30,
+                  "endLine": 2086,
+                  "endColumn": 35,
+                  "charOffset": 76951,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-19b4d806-a4e9-42a5-98ee-400aad1a98c0",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 2086,
+                  "startColumn": 30,
+                  "endLine": 2086,
+                  "endColumn": 38,
+                  "charOffset": 76951,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-32cca92b-058a-4932-9ec1-6ac497ffe3c8",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "subprocess call with shell=True identified, security issue."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/validator.py"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 5,
+                  "endLine": 124,
+                  "endColumn": 48,
+                  "snippet": {
+                    "text": "    subprocess.call(['rm *.csv'], shell = True)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 123,
+                  "endLine": 125,
+                  "snippet": {
+                    "text": "\n    subprocess.call(['rm *.csv'], shell = True)\n    # Analyse performance\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "HIGH",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-0d09b956-c96a-4e83-903b-f09f8cc764c9",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Use of possibly insecure function - consider using safer ast.literal_eval."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/validator.py"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 20,
+                  "endLine": 78,
+                  "endColumn": 46,
+                  "snippet": {
+                    "text": "            size = eval('size'+' '+ iterator)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 77,
+                  "endLine": 79,
+                  "snippet": {
+                    "text": "                    src_align, dst_align], stdout=v_result, env = env, check=True)\n            size = eval('size'+' '+ iterator)\n        print(v_result.read())\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-3d4b0164-33e8-4f02-888b-e15fba1b4e40",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1962,
+                  "startColumn": 31,
+                  "endLine": 1962,
+                  "endColumn": 36,
+                  "charOffset": 72536,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-5ca92d47-50ca-47a0-ada7-14319c8f7132",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strncat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1879,
+                  "startColumn": 8,
+                  "endLine": 1879,
+                  "endColumn": 65,
+                  "charOffset": 69465,
+                  "charLength": 57,
+                  "snippet": {
+                    "text": "strncat((char*)page_alnd_addr, (char*)needle, needle_len)",
+                    "rendered": {
+                      "text": "strncat((char*)page_alnd_addr, (char*)needle, needle_len)",
+                      "markdown": "`strncat((char*)page_alnd_addr, (char*)needle, needle_len)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 69465,
+                        "charLength": 57
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char*)page_alnd_addr,  needle_len,  (char*)needle)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 69465,
+                        "charLength": 57
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char*)page_alnd_addr,  (char*)needle,  needle_len)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-568f192e-9b3d-4b3f-822b-e6a2dc06fb6e",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strncat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1750,
+                  "startColumn": 14,
+                  "endLine": 1750,
+                  "endColumn": 75,
+                  "charOffset": 64335,
+                  "charLength": 61,
+                  "snippet": {
+                    "text": "strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)",
+                    "rendered": {
+                      "text": "strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)",
+                      "markdown": "`strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 64335,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr,  size,  (char *)str3_alnd_addr)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 64335,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *)str3_alnd_addr,  size)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-ff389c7b-8a46-4c8c-8df6-82911d0a0d4c",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1746,
+                  "startColumn": 24,
+                  "endLine": 1746,
+                  "endColumn": 29,
+                  "charOffset": 64118,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-c607c085-1678-4152-aff7-93902be6b52d",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1728,
+                  "startColumn": 24,
+                  "endLine": 1728,
+                  "endColumn": 31,
+                  "charOffset": 63230,
+                  "charLength": 7,
+                  "snippet": {
+                    "text": "rand()%",
+                    "rendered": {
+                      "text": "rand()%",
+                      "markdown": "`rand()%`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-d2437473-4b35-4d80-a07a-563f592e2b70",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strncat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1696,
+                  "startColumn": 10,
+                  "endLine": 1696,
+                  "endColumn": 71,
+                  "charOffset": 62051,
+                  "charLength": 61,
+                  "snippet": {
+                    "text": "strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)",
+                    "rendered": {
+                      "text": "strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)",
+                      "markdown": "`strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 62051,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr,  size,  (char *)str2_alnd_addr)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 62051,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *)str2_alnd_addr,  size)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-25da8e8d-c59f-40a6-b469-c1933c613813",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1691,
+                  "startColumn": 27,
+                  "endLine": 1691,
+                  "endColumn": 32,
+                  "charOffset": 61848,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-69c38849-30f4-4341-8ce4-7ce0a0ccd3f2",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1691,
+                  "startColumn": 27,
+                  "endLine": 1691,
+                  "endColumn": 35,
+                  "charOffset": 61848,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-c3bba3ee-5341-4612-bac1-481f7b2d8e3b",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strncat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1678,
+                  "startColumn": 10,
+                  "endLine": 1678,
+                  "endColumn": 71,
+                  "charOffset": 61260,
+                  "charLength": 61,
+                  "snippet": {
+                    "text": "strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)",
+                    "rendered": {
+                      "text": "strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)",
+                      "markdown": "`strncat((char *)str1_alnd_addr, (char *)str2_alnd_addr, size)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 61260,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr,  size,  (char *)str2_alnd_addr)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 61260,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *)str2_alnd_addr,  size)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-a9f021e8-843d-4966-b9e3-5defe3782db4",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1663,
+                  "startColumn": 24,
+                  "endLine": 1663,
+                  "endColumn": 32,
+                  "charOffset": 60804,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-f0c0bd38-3f52-4e9d-a5b3-7d9180c3a297",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1663,
+                  "startColumn": 24,
+                  "endLine": 1663,
+                  "endColumn": 29,
+                  "charOffset": 60804,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-20e759d4-e216-42b0-af51-d91aa7f75341",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strcat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1609,
+                  "startColumn": 14,
+                  "endLine": 1609,
+                  "endColumn": 53,
+                  "charOffset": 58829,
+                  "charLength": 39,
+                  "snippet": {
+                    "text": "strcat((char *)str1_alnd_addr, (char *)",
+                    "rendered": {
+                      "text": "strcat((char *)str1_alnd_addr, (char *)",
+                      "markdown": "`strcat((char *)str1_alnd_addr, (char *)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 58829,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr, <size of (char *)str1_alnd_addr>,  (char *)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 58829,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *, <size of (char *)str1_alnd_addr>)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-2d375ec9-0e8c-41a8-909b-01cd4aa130b9",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1746,
+                  "startColumn": 24,
+                  "endLine": 1746,
+                  "endColumn": 32,
+                  "charOffset": 64118,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-d5b8f9a4-c75f-4d0e-8257-fd5d5fac773c",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strncat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1733,
+                  "startColumn": 14,
+                  "endLine": 1733,
+                  "endColumn": 75,
+                  "charOffset": 63481,
+                  "charLength": 61,
+                  "snippet": {
+                    "text": "strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)",
+                    "rendered": {
+                      "text": "strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)",
+                      "markdown": "`strncat((char *)str1_alnd_addr, (char *)str3_alnd_addr, size)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 63481,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr,  size,  (char *)str3_alnd_addr)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "strncat adds the null terminator at character 'n + 1', rather than at the nth character. this frequently leads to the null terminator being added in the memory adjacent to the destination buffer, rather than in the destination buffer."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 63481,
+                        "charLength": 61
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *)str3_alnd_addr,  size)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-1699fe39-937b-4740-9553-181b713c603e",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1728,
+                  "startColumn": 24,
+                  "endLine": 1728,
+                  "endColumn": 29,
+                  "charOffset": 63230,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-4fc2208a-eeff-4e41-95e8-ab0b9af53737",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1604,
+                  "startColumn": 24,
+                  "endLine": 1604,
+                  "endColumn": 29,
+                  "charOffset": 58612,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-f7588291-37e8-4189-9195-d1c180b1b2c0",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1588,
+                  "startColumn": 58,
+                  "endLine": 1588,
+                  "endColumn": 65,
+                  "charOffset": 57885,
+                  "charLength": 7,
+                  "snippet": {
+                    "text": "rand()%",
+                    "rendered": {
+                      "text": "rand()%",
+                      "markdown": "`rand()%`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-69d5ff4f-78e1-4205-90db-a8021add0db4",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1604,
+                  "startColumn": 24,
+                  "endLine": 1604,
+                  "endColumn": 32,
+                  "charOffset": 58612,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-2dd2ccb8-cd72-4b41-9c21-433452f32ee9",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strcat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1591,
+                  "startColumn": 14,
+                  "endLine": 1591,
+                  "endColumn": 53,
+                  "charOffset": 58000,
+                  "charLength": 39,
+                  "snippet": {
+                    "text": "strcat((char *)str1_alnd_addr, (char *)",
+                    "rendered": {
+                      "text": "strcat((char *)str1_alnd_addr, (char *)",
+                      "markdown": "`strcat((char *)str1_alnd_addr, (char *)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 58000,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr, <size of (char *)str1_alnd_addr>,  (char *)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 58000,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *, <size of (char *)str1_alnd_addr>)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-62599944-f2a0-4bf4-b597-9302a040dbc1",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1588,
+                  "startColumn": 58,
+                  "endLine": 1588,
+                  "endColumn": 63,
+                  "charOffset": 57885,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-e610bd4a-e8b2-4490-822d-01140f12b92b",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1586,
+                  "startColumn": 53,
+                  "endLine": 1586,
+                  "endColumn": 58,
+                  "charOffset": 57794,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-7d31fd7e-552a-47f8-ad44-65594a4d41a4",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1585,
+                  "startColumn": 53,
+                  "endLine": 1585,
+                  "endColumn": 58,
+                  "charOffset": 57718,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-7e332286-b084-49cb-965a-2269d6627a73",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strcat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1552,
+                  "startColumn": 10,
+                  "endLine": 1552,
+                  "endColumn": 49,
+                  "charOffset": 56451,
+                  "charLength": 39,
+                  "snippet": {
+                    "text": "strcat((char *)str1_alnd_addr, (char *)",
+                    "rendered": {
+                      "text": "strcat((char *)str1_alnd_addr, (char *)",
+                      "markdown": "`strcat((char *)str1_alnd_addr, (char *)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 56451,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr, <size of (char *)str1_alnd_addr>,  (char *)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 56451,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *, <size of (char *)str1_alnd_addr>)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-902774ac-d8ac-4957-a617-22648bb7c4b2",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1585,
+                  "startColumn": 53,
+                  "endLine": 1585,
+                  "endColumn": 61,
+                  "charOffset": 57718,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-4fc6e1bb-755f-48ac-885f-917995ca4be8",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1586,
+                  "startColumn": 53,
+                  "endLine": 1586,
+                  "endColumn": 61,
+                  "charOffset": 57794,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-03dd1f33-e3d2-46ef-99e5-78e9f55da3b5",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1547,
+                  "startColumn": 27,
+                  "endLine": 1547,
+                  "endColumn": 35,
+                  "charOffset": 56248,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-9cc33e28-ac35-42dd-8be8-9dc9bba8ed37",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1547,
+                  "startColumn": 27,
+                  "endLine": 1547,
+                  "endColumn": 32,
+                  "charOffset": 56248,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-929fe5b9-d280-46f4-9762-3ce8d662eda0",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Banned C function detected (strcat)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1535,
+                  "startColumn": 10,
+                  "endLine": 1535,
+                  "endColumn": 49,
+                  "charOffset": 55685,
+                  "charLength": 39,
+                  "snippet": {
+                    "text": "strcat((char *)str1_alnd_addr, (char *)",
+                    "rendered": {
+                      "text": "strcat((char *)str1_alnd_addr, (char *)",
+                      "markdown": "`strcat((char *)str1_alnd_addr, (char *)`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 55685,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strcat_s((char *)str1_alnd_addr, <size of (char *)str1_alnd_addr>,  (char *)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "description": {
+                "text": "If the combination of strings is larger than the destination buffer, strcat will cbuffer overflow the destination buffer"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "tools/validator/libmem_validator.c"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "charOffset": 55685,
+                        "charLength": 39
+                      },
+                      "insertedContent": {
+                        "text": "strlcat((char *)str1_alnd_addr,  (char *, <size of (char *)str1_alnd_addr>)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "API.DangerousAPI.BannedFunction"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-ff64865c-4cde-4190-a355-ea52ecbf117e",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1520,
+                  "startColumn": 24,
+                  "endLine": 1520,
+                  "endColumn": 31,
+                  "charOffset": 55236,
+                  "charLength": 7,
+                  "snippet": {
+                    "text": "rand()%",
+                    "rendered": {
+                      "text": "rand()%",
+                      "markdown": "`rand()%`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-855c214f-8d2d-4efd-a2a9-42fd07bb9235",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1520,
+                  "startColumn": 24,
+                  "endLine": 1520,
+                  "endColumn": 29,
+                  "charOffset": 55236,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-93a409c0-6eb6-4952-bfcc-16a8fe4a255a",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1516,
+                  "startColumn": 49,
+                  "endLine": 1516,
+                  "endColumn": 54,
+                  "charOffset": 55074,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-19a0d306-d13c-4e98-8bfe-a8a827eb5276",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1515,
+                  "startColumn": 49,
+                  "endLine": 1515,
+                  "endColumn": 54,
+                  "charOffset": 55002,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-bc1ba377-0189-4580-be6e-ca8bd32aad94",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1402,
+                  "startColumn": 48,
+                  "endLine": 1402,
+                  "endColumn": 53,
+                  "charOffset": 51383,
+                  "charLength": 5,
+                  "snippet": {
+                    "text": "rand(",
+                    "rendered": {
+                      "text": "rand(",
+                      "markdown": "`rand(`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        },
+        {
+          "ruleId": "glog-af9c0e8c-a14a-4c8d-8f50-7a25a0615566",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Do not use weak/non-cryptographic random number generators"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/validator/libmem_validator.c"
+                },
+                "region": {
+                  "startLine": 1402,
+                  "startColumn": 48,
+                  "endLine": 1402,
+                  "endColumn": 56,
+                  "charOffset": 51383,
+                  "charLength": 8,
+                  "snippet": {
+                    "text": "rand() %",
+                    "rendered": {
+                      "text": "rand() %",
+                      "markdown": "`rand() %`"
+                    }
+                  },
+                  "sourceLanguage": "c"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "DevSkimSeverity": "Important",
+            "DevSkimConfidence": "High",
+            "tags": [
+              "Cryptography.PRNG.Weak"
+            ]
+          }
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
